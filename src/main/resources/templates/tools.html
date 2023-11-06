@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Tools</title>
+    <link rel="stylesheet" href="../css/style-index.css">
+</head>
+
+<body class="flex-row">
+<div class="container" style="--width: 30%;"></div>
+<div class="container minwidth" style="--width: 60%; --mwidth: 800px;">
+    <div class="container-sticky flex-row header" style="--width:100%">
+        <div class="container flex-row" style="--width: 30%">
+            <img src="../images/logo.png" alt="MEP" class="header-image">
+        </div>
+        <div class="container" style="--width: 60%"></div>
+        <div class="container flex-col align-row align-itm" style="--width: 10%">
+            <span th:style="${loggedoutdisplay}">User:&nbsp<b th:text="${username}"> </b></span>
+            <span th:style="${loggedoutdisplay}">Role:&nbsp<b th:text="${authority}"> </b></span>
+            <a class="header-button-style flex-row align-row align-itm" href="/login"
+               th:style="${loggedindisplay}">Login</a>
+            <a class="header-button-style flex-row align-row align-itm" href="/logout"
+               th:style="${loggedoutdisplay}">Logout</a>
+        </div>
+    </div>
+    <div class="container-sticky menu flex-row align-row align-txt align-itm" style="--width:100%">
+        <a class="menu-button-style flex-row align-itm align-row" href="/">Home</a>
+        <a class="menu-button-style flex-row align-itm align-row menu_active " href="/tools">Tools</a>
+        <a class="menu-button-style flex-row align-itm align-row" href="/products">Products</a>
+        <a class="menu-button-style flex-row align-itm align-row" href="/others">Others</a>
+        <a class="menu-button-style flex-row align-itm align-row" href="/contact">Contact</a>
+    </div>
+
+    <div class="container body pos-rel" style="--width:100%; --mheight: 700px">
+        <div class="body-part flex-row align-row"
+             style="--top: 0%;--width:100%;--height:100%;font-size: 16px; flex-wrap: wrap;">
+            <!--Endpoint-->
+            <div class="endpoint">
+                <!-- Title -->
+                <h3 class="flex-row align-row endpoint-title">Generate Random String</h3>
+                <form action="/tools/random" method="post">
+                    <!-- Input -->
+                    <label class="endpoint-lbl" for="length">String Length:</label><br>
+                    <input class="endpoint-txt" type="text" id="length" name="length" pattern="[1-9]{1}[0-9]{0,}"
+                           required><br>
+                    <!-- Button -->
+                    <input class="endpoint-btn" type="submit" value="Call Endpoint">
+                </form>
+                <!-- Response -->
+                <div class="endpoint-response">
+                    <b class="flex-row">Result:</b>
+                    <textarea class="endpoint-txt" readonly="readonly" rows="2"
+                              th:text="${getRandomString}"></textarea>
+                </div>
+            </div>
+
+            <!--Endpoint-->
+            <div class="endpoint">
+                <!-- Title -->
+                <h3 class="flex-row align-row endpoint-title">Generate Password</h3>
+                <form action="/tools/password" method="post">
+                    <!-- Input -->
+                    <label class="endpoint-lbl" for="lowerCaseLen">Lower Case Number:</label><br>
+                    <input class="endpoint-txt" type="text" id="lowerCaseLen" name="lowerCaseLen"
+                           pattern="[1-9]{1}[0-9]{0,}" required><br>
+                    <!-- Input -->
+                    <label class="endpoint-lbl" for="upperCaseLen">Upper Case Number:</label><br>
+                    <input class="endpoint-txt" type="text" id="upperCaseLen" name="upperCaseLen"
+                           pattern="[1-9]{1}[0-9]{0,}"><br>
+                    <!-- Input -->
+                    <label class="endpoint-lbl" for="numbersLen">Digits Case Number:</label><br>
+                    <input class="endpoint-txt" type="text" id="numbersLen" name="numbersLen"
+                           pattern="[1-9]{1}[0-9]{0,}"><br>
+                    <!-- Input -->
+                    <label class="endpoint-lbl" for="specialCharsLen">Special Chars Number:</label><br>
+                    <input class="endpoint-txt" type="text" id="specialCharsLen" name="specialCharsLen"
+                           pattern="[1-9]{1}[0-9]{0,}"><br>
+                    <!-- Button -->
+                    <input class="endpoint-btn" type="submit" value="Call Endpoint">
+                </form>
+                <!-- Response -->
+                <div class="endpoint-response">
+                    <b class="flex-row">Result:</b>
+                    <textarea class="endpoint-txt" readonly="readonly" rows="2" th:text="${getPassword}"></textarea>
+                </div>
+            </div>
+
+            <!--Endpoint-->
+            <div class="endpoint">
+                <!-- Title -->
+                <h3 class="flex-row align-row endpoint-title">Password Encoder</h3>
+                <form action="/tools/encode" method="post">
+                    <!-- Input -->
+                    <label class="endpoint-lbl" for="toEncode">Password:</label><br>
+                    <input class="endpoint-txt" type="text" id="toEncode" name="toEncode" pattern=".{1,}"
+                           required><br>
+                    <!-- Button -->
+                    <input class="endpoint-btn" type="submit" value="Call Endpoint">
+                </form>
+                <!-- Response -->
+                <div class="endpoint-response">
+                    <b class="flex-row">Result:</b>
+                    <textarea class="endpoint-txt" readonly="readonly" rows="2" th:text="${getEncode}"></textarea>
+                </div>
+            </div>
+
+            <!--Endpoint-->
+            <div class="endpoint">
+                <!-- Title -->
+                <h3 class="flex-row align-row endpoint-title">Compare passwords</h3>
+                <form action="/tools/check" method="post">
+                    <!-- Input -->
+                    <label class="endpoint-lbl" for="plain">Password:</label><br>
+                    <input class="endpoint-txt" type="text" id="plain" name="plain" pattern=".{1,}" required><br>
+                    <!-- Input -->
+                    <label class="endpoint-lbl" for="encoded">Encoded Password:</label><br>
+                    <input class="endpoint-txt" type="text" id="encoded" name="encoded" pattern=".{1,}"
+                           required><br>
+                    <!-- Button -->
+                    <input class="endpoint-btn" type="submit" value="Call Endpoint">
+                </form>
+                <!-- Response -->
+                <div class="endpoint-response">
+                    <b class="flex-row">Result:</b>
+                    <textarea class="endpoint-txt" readonly="readonly" rows="2"
+                              th:text="${checkPasswords}"></textarea>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container footer flex-row" style="--width:100%">
+        <div class="container flex-row align-itm align-row" style="--width:30%">
+            <h3>Powered by</h3>
+        </div>
+        <div class="container flex-row align-itm align-row" style="--width:10%"></div>
+        <div class="container flex-row align-itm align-row" style="--width:60%;">
+            <img class="footer-image" src="../images/java.png" alt="Java">
+            <img class="footer-image" src="../images/spring.png" alt="Spring">
+            <img class="footer-image" src="../images/html.png" alt="HTML">
+            <img class="footer-image" src="../images/css.png" alt="CSS">
+        </div>
+    </div>
+</div>
+<div class="container" style="--width: 30%;"></div>
+</body>
+
+</html>

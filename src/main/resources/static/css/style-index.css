@@ -1,0 +1,214 @@
+/* -----------------------------------------*/
+/*Override props*/
+body {
+    background-color: rgb(220, 220, 220);
+    font-family: Calibri, sans-serif;
+}
+
+/* ------------------------------------------ */
+/*Props*/
+.no-margins {
+    margin: 0px;
+}
+
+.flex-row {
+    display: flex;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.align-row {
+    justify-content: center;
+}
+
+.align-col {
+    align-content: center;
+}
+
+.align-itm {
+    align-items: center;
+}
+
+.align-txt {
+    text-align: center;
+}
+
+.minwidth {
+    min-width: var(--mwidth);
+}
+
+.pos-abs {
+    position: absolute;
+}
+
+.pos-rel {
+    position: relative;
+}
+
+/* ------------------------------------------ */
+/*Containers*/
+
+.container {
+    height: 100%;
+    width: var(--width);
+}
+
+.container-sticky {
+    position: sticky;
+    height: 100%;
+    width: var(--width);
+    z-index: 1;
+}
+
+/* ------------------------------------------ */
+/*Header*/
+.header {
+    top: 0%;
+    height: 120px;
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.header-image {
+    height: 100%;
+    filter: drop-shadow(0.05px 0.05px 0 black) drop-shadow(-0.05px -0.05px 0 black);
+}
+
+.header-button-style {
+    width: 70px;
+    height: 25px;
+    color: white;
+    font-size: 1em;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background-color: rgba(95, 39, 158, 1);
+}
+
+.header-button-style:hover {
+    background-color: rgb(135, 96, 180);
+}
+
+/* ------------------------------------------ */
+/*Menu*/
+.menu {
+    top: 120px;
+    height: 60px;
+    margin-bottom: 10px;
+    background-color: rgba(95, 39, 158, 1);
+}
+
+.menu-button-style {
+    height: 75%;
+    width: 20%;
+    color: white;
+    text-decoration: none;
+    font-size: 1.25em;
+    margin-left: 1%;
+    margin-right: 1%;
+    border-radius: 5px;
+}
+
+.menu-button-style:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.menu_active {
+    font-weight: bold;
+    border-bottom: 2px solid white;
+    border-top: 2px solid white;
+}
+
+/* ------------------------------------------ */
+/*Body*/
+.body {
+    min-height: var(--mheight);
+    margin-bottom: 10px;
+    background-color: white;
+}
+
+.body-part {
+    height: var(--height);
+    width: var(--width);
+    top: var(--top);
+}
+
+.body-tip-body {
+    width: 80%;
+    height: auto;
+    background-color: #B1D4E0;
+    color: black;
+    border: 1px;
+    text-align: center;
+    border-style: dotted;
+    border-color: black;
+    border-radius: 15px;
+}
+
+/* ------------------------------------------ */
+/*Footer*/
+.footer {
+    height: 100px;
+    color: white;
+    background-color: rgba(95, 39, 158, 1);
+}
+
+.footer-image {
+    height: 50%;
+    margin-left: 25px;
+    margin-right: 25px;
+    filter: drop-shadow(0.25px 0.25px 0 black) drop-shadow(-0.25px -0.25px 0 black);
+}
+
+/* ------------------------------------------ */
+/*Endpoints*/
+.endpoint {
+    width: 33%;
+    height: auto;
+    min-height: 185px;
+    padding-left: 1%;
+    padding-right: 1%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: rgb(180, 180, 255);
+    border-radius: 10px;
+}
+
+.endpoint-title{
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.endpoint-lbl{
+}
+
+.endpoint-txt{
+    width: 75%;
+    resize: none;
+}
+.endpoint-btn{
+    margin-top: 5px;
+}
+
+.endpoint-response {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.table-block{
+    width: 70%;
+}
+
+.table-menu{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: rgb(180, 180, 255);
+}

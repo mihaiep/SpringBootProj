@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Others</title>
+    <link rel="stylesheet" href="../css/style-index.css">
+</head>
+
+<body class="flex-row">
+<div class="container" style="--width: 30%;"></div>
+<div class="container minwidth" style="--width: 60%; --mwidth: 800px;">
+    <div class="container-sticky flex-row header" style="--width:100%">
+        <div class="container flex-row" style="--width: 30%">
+            <img src="../images/logo.png" alt="MEP" class="header-image">
+        </div>
+        <div class="container" style="--width: 60%"></div>
+        <div class="container flex-col align-row align-itm" style="--width: 10%">
+            <span th:style="${loggedoutdisplay}">User:&nbsp<b th:text="${username}"> </b></span>
+            <span th:style="${loggedoutdisplay}">Role:&nbsp<b th:text="${authority}"> </b></span>
+            <a class="header-button-style flex-row align-row align-itm" href="/login"
+               th:style="${loggedindisplay}">Login</a>
+            <a class="header-button-style flex-row align-row align-itm" href="/logout"
+               th:style="${loggedoutdisplay}">Logout</a>
+        </div>
+    </div>
+    <div class="container-sticky menu flex-row align-row align-txt align-itm" style="--width:100%">
+        <a class="menu-button-style flex-row align-itm align-row" href="/">Home</a>
+        <a class="menu-button-style flex-row align-itm align-row" href="/tools">Tools</a>
+        <a class="menu-button-style flex-row align-itm align-row" href="/products">Products</a>
+        <a class="menu-button-style flex-row align-itm align-row menu_active" href="/others">Others</a>
+        <a class="menu-button-style flex-row align-itm align-row" href="/contact">Contact</a>
+    </div>
+
+    <div class="container body pos-rel" style="--width:100%; --mheight: 700px">
+        <div class="body-part flex-col align-row" style="--top: 0%;--width:100%;--height:100%;font-size: 16px">
+            <div class="flex-row align-row" style="font-size: 16px; flex-wrap: wrap;">
+                <!--Endpoint-->
+                <div class="endpoint">
+                    <!-- Title -->
+                    <h3 class="flex-row align-row endpoint-title">Create Session User (Temp)</h3>
+                    <form action="/others/create-user" method="post">
+                        <!-- Input -->
+                        <label class="endpoint-lbl" for="name">User Name:</label><br>
+                        <input class="endpoint-txt" type="text" id="name" name="name" required><br>
+                        <!-- Input -->
+                        <label class="endpoint-lbl" for="password">User Password:</label><br>
+                        <input class="endpoint-txt" type="password" id="password" name="password" required><br>
+                        <!-- Button -->
+                        <input class="endpoint-btn" type="submit" value="Call Endpoint">
+                    </form>
+                    <!-- Response -->
+                    <div class="endpoint-response">
+                        <b class="flex-row">Result:</b>
+                        <textarea class="endpoint-txt" readonly="readonly" rows="2"
+                                  th:text="${createUser}"></textarea>
+                    </div>
+                </div>
+                <!--Endpoint-->
+                <div class="endpoint">
+                    <!-- Title -->
+                    <h3 class="flex-row align-row endpoint-title">Get Image</h3>
+                    <p>There are few images that can be retrieved:</p>
+                    <ol>
+                        <li><a href="/others/image/get=css.png">css.png</a></li>
+                        <li><a href="/others/image/get=html.png">html.png</a></li>
+                        <li><a href="/others/image/get=java.png">java.png</a></li>
+                        <li><a href="/others/image/get=logo.png">logo.png</a></li>
+                        <li><a href="/others/image/get=spring.png">spring.png</a></li>
+                    </ol>
+                </div>
+                <!--Endpoint-->
+                <div class="endpoint">
+                    <!-- Title -->
+                    <h3 class="flex-row align-row endpoint-title">Say Hello (Body)</h3>
+                    <p>To reach this endpoint you will need to make a GET request that has in Body the following variable: name</p>
+                    <p>Endpoint link: <textarea class="endpoint-txt" readonly="readonly" rows="1">/others/hello/body</textarea></p>
+                </div>
+                <!--Endpoint-->
+                <div class="endpoint">
+                    <!-- Title -->
+                    <h3 class="flex-row align-row endpoint-title">Say Hello (Header)</h3>
+                    <p>To reach this endpoint you will need to make a GET request that has in Header the following variable: name</p>
+                    <p>Endpoint link: <textarea class="endpoint-txt" readonly="readonly" rows="1">/others/hello/header</textarea></p>
+                </div>
+                <!--Endpoint-->
+                <div class="endpoint">
+                    <!-- Title -->
+                    <h3 class="flex-row align-row endpoint-title">Say Hello (Path)</h3>
+                    <p>To reach this endpoint you will need to make a GET request that has in link the following variable: name</p>
+                    <p>Endpoint link: <textarea class="endpoint-txt" readonly="readonly" rows="1">/others/hello=[name]</textarea></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container footer flex-row" style="--width:100%">
+        <div class="container flex-row align-itm align-row" style="--width:30%">
+            <h3>Powered by</h3>
+        </div>
+        <div class="container flex-row align-itm align-row" style="--width:10%"></div>
+        <div class="container flex-row align-itm align-row" style="--width:60%;">
+            <img class="footer-image" src="../images/java.png" alt="Java">
+            <img class="footer-image" src="../images/spring.png" alt="Spring">
+            <img class="footer-image" src="../images/html.png" alt="HTML">
+            <img class="footer-image" src="../images/css.png" alt="CSS">
+        </div>
+    </div>
+</div>
+<div class="container" style="--width: 30%;"></div>
+</body>
+
+</html>

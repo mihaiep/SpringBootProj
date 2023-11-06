@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="../css/style-index.css">
+</head>
+
+<body class="flex-row">
+<div class="container" style="--width: 30%;"></div>
+<div class="container minwidth" style="--width: 60%; --mwidth: 800px;">
+    <div class="container-sticky flex-row header" style="--width:100%">
+        <div class="container flex-row" style="--width: 30%">
+            <img src="../images/logo.png" alt="MEP" class="header-image">
+        </div>
+        <div class="container" style="--width: 60%"></div>
+        <div class="container flex-col align-row align-itm" style="--width: 10%">
+            <span th:style="${loggedoutdisplay}">User:&nbsp<b th:text="${username}"> </b></span>
+            <span th:style="${loggedoutdisplay}">Role:&nbsp<b th:text="${authority}"> </b></span>
+            <a class="header-button-style flex-row align-row align-itm" href="/login"
+               th:style="${loggedindisplay}">Login</a>
+            <a class="header-button-style flex-row align-row align-itm" href="/logout"
+               th:style="${loggedoutdisplay}">Logout</a>
+        </div>
+    </div>
+    <div class="container-sticky menu flex-row align-row align-txt align-itm" style="--width:100%">
+        <a class="menu-button-style flex-row align-itm align-row menu_active" href="/">Home</a>
+        <a class="menu-button-style flex-row align-itm align-row" href="/tools">Tools</a>
+        <a class="menu-button-style flex-row align-itm align-row" href="/products">Products</a>
+        <a class="menu-button-style flex-row align-itm align-row" href="/others">Others</a>
+        <a class="menu-button-style flex-row align-itm align-row" href="/contact">Contact</a>
+    </div>
+
+    <div class="container body pos-rel" style="--width:100%; --mheight: 700px">
+        <div class="body-part pos-abs" style="--top: 0%;--height: 50%">
+            <div style="font-size: 16.5px;margin-left: 20px;">
+                <h2>Hello!</h2>
+                <p>Welcome to my first Spring WebSite.</p>
+                <p>This site was created to show some functionalities that I've learned during the training.</p>
+                <p>Have fun exploring it!</p>
+            </div>
+        </div>
+        <div class="body-part pos-abs" style="--top: 50%;--height: 35%"></div>
+        <div class="body-part pos-abs flex-col align-itm align-row" style="--top: 85%;--height: 15%">
+            <div class="body-tip-body flex-row">
+                <div class="container flex-col align-row" style="--width:20%">
+                    <p>TIP</p>
+                </div>
+                <div class="container" style="--width:2px;background-color: gray;"></div>
+                <div class="container" style="--width:80%">
+                    <p><span th:text="${tipID}"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container footer flex-row" style="--width:100%">
+        <div class="container flex-row align-itm align-row" style="--width:30%">
+            <h3>Powered by</h3>
+        </div>
+        <div class="container flex-row align-itm align-row" style="--width:10%"></div>
+        <div class="container flex-row align-itm align-row" style="--width:60%;">
+            <img class="footer-image" src="../images/java.png" alt="Java">
+            <img class="footer-image" src="../images/spring.png" alt="Spring">
+            <img class="footer-image" src="../images/html.png" alt="HTML">
+            <img class="footer-image" src="../images/css.png" alt="CSS">
+        </div>
+    </div>
+</div>
+<div class="container" style="--width: 30%;"></div>
+</body>
+
+</html>

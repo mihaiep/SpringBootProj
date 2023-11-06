@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<!--suppress ALL -->
+<html lang="en" xmlns:th="http://thymeleaf.org/">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" href="../css/style-index.css">
+</head>
+
+<body class="flex-row">
+<div class="container" style="--width: 30%;"></div>
+<div class="container minwidth" style="--width: 60%; --mwidth: 800px;">
+    <div class="container-sticky flex-row header" style="--width:100%">
+        <div class="container flex-row" style="--width: 30%">
+            <img src="../images/logo.png" alt="MEP" class="header-image">
+        </div>
+        <div class="container" style="--width: 60%"></div>
+        <div class="container flex-col align-row align-itm" style="--width: 10%">
+            <span th:style="${loggedoutdisplay}">User:&nbsp<b th:text="${username}"> </b></span>
+            <span th:style="${loggedoutdisplay}">Role:&nbsp<b th:text="${authority}"> </b></span>
+            <a class="header-button-style flex-row align-row align-itm" href="/login"
+               th:style="${loggedindisplay}">Login</a>
+            <a class="header-button-style flex-row align-row align-itm" href="/logout"
+               th:style="${loggedoutdisplay}">Logout</a>
+        </div>
+    </div>
+
+    <div class="container-sticky menu flex-row align-row align-txt align-itm" style="--width:100%">
+        <a class="menu-button-style flex-row align-itm align-row" href="/">Home</a>
+        <a class="menu-button-style flex-row align-itm align-row" href="/tools">Tools</a>
+        <a class="menu-button-style flex-row align-itm align-row menu_active" href="/products">Products</a>
+        <a class="menu-button-style flex-row align-itm align-row" href="/others">Others</a>
+        <a class="menu-button-style flex-row align-itm align-row" href="/contact">Contact</a>
+    </div>
+
+    <div class="container body pos-rel" style="--width:100%; --mheight: 700px">
+        <div class="body-part flex-col align-row" style="--top: 0%;--width:100%;--height:100%;font-size: 16px">
+            <div class="flex-row align-row" style="font-size: 16px; flex-wrap: wrap;">
+                <!--Endpoint-->
+                <div class="endpoint">
+                    <!-- Title -->
+                    <h3 class="flex-row align-row endpoint-title">Generate Random Products</h3>
+                    <form action="/products/add/random" method="post">
+                        <!-- Input -->
+                        <label class="endpoint-lbl" for="productsNum">Products Number:</label><br>
+                        <input class="endpoint-txt" type="text" id="productsNum" name="productsNum"
+                               pattern="[1-9][0-9]{0,}" required><br>
+                        <!-- Button -->
+                        <input class="endpoint-btn" type="submit" value="Call Endpoint">
+                    </form>
+                    <!-- Response -->
+                    <div class="endpoint-response">
+                        <b class="flex-row">Result:</b>
+                        <textarea class="endpoint-txt" readonly="readonly" rows="2"
+                                  th:text="${generateRandomProducts}"></textarea>
+                    </div>
+                </div>
+                <!--Endpoint-->
+                <div class="endpoint">
+                    <!-- Title -->
+                    <h3 class="flex-row align-row endpoint-title">Create Product</h3>
+                    <form action="/products/add" method="post">
+                        <!-- Input -->
+                        <label class="endpoint-lbl" for="newName">Product Name:</label><br>
+                        <input class="endpoint-txt" type="text" id="newName" name="newName" required><br>
+                        <!-- Input -->
+                        <label class="endpoint-lbl" for="newCategory">Product Category:</label><br>
+                        <input class="endpoint-txt" type="text" id="newCategory" name="newCategory" required><br>
+                        <!-- Input -->
+                        <label class="endpoint-lbl" for="newPrice">Product price:</label><br>
+                        <input class="endpoint-txt" type="text" id="newPrice" name="newPrice"
+                               pattern="[1-9][0-9]*(.[0-9]*[0-9])?" required><br>
+                        <!-- Button -->
+                        <input class="endpoint-btn" type="submit" value="Call Endpoint">
+                    </form>
+                    <!-- Response -->
+                    <div class="endpoint-response">
+                        <b class="flex-row">Result:</b>
+                        <textarea class="endpoint-txt" readonly="readonly" rows="2"
+                                  th:text="${createNewProduct}"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body-part" style="--height:25px;"></div>
+
+            <div class="flex-row align-row" style="font-size: 16px; flex-wrap: wrap;">
+                <!--Endpoint-->
+                <div class="endpoint">
+                    <!-- Title -->
+                    <h3 class="flex-row align-row endpoint-title">Delete by IDs</h3>
+                    <form action="/products/delete/id" method="post">
+                        <!-- Input -->
+                        <label class="endpoint-lbl" for="deleteIds">Products Number:</label><br>
+                        <input class="endpoint-txt" type="text" id="deleteIds" name="deleteIds"
+                               pattern="[1-9][0-9]{0,}(,[ ]?[1-9][0-9]{0,}){0,}" required><br>
+                        <!-- Button -->
+                        <input class="endpoint-btn" type="submit" value="Call Endpoint">
+                    </form>
+                    <!-- Response -->
+                    <div class="endpoint-response">
+                        <b class="flex-row">Result:</b>
+                        <textarea class="endpoint-txt" readonly="readonly" rows="2"
+                                  th:text="${deleteProductByID}"></textarea>
+                    </div>
+                </div>
+                <!--Endpoint-->
+                <div class="endpoint">
+                    <!-- Title -->
+                    <h3 class="flex-row align-row endpoint-title">Delete By Name</h3>
+                    <form action="/products/delete/name" method="post">
+                        <!-- Input -->
+                        <label class="endpoint-lbl" for="deleteName">Product Name:</label><br>
+                        <input class="endpoint-txt" type="text" id="deleteName" name="deleteName" required><br>
+                        <!-- Button -->
+                        <input class="endpoint-btn" type="submit" value="Call Endpoint">
+                    </form>
+                    <!-- Response -->
+                    <div class="endpoint-response">
+                        <b class="flex-row">Result:</b>
+                        <textarea class="endpoint-txt" readonly="readonly" rows="2"
+                                  th:text="${deleteProductByName}"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body-part" style="--height:25px;"></div>
+
+            <div class="flex-row align-row" style="font-size: 16px; flex-wrap: wrap;">
+                <!--Endpoint-->
+                <div class="endpoint">
+                    <!-- Title -->
+                    <h3 class="flex-row align-row endpoint-title">Find Product By ID</h3>
+                    <form action="/products/search/id" method="post">
+                        <!-- Input -->
+                        <label class="endpoint-lbl" for="productId">Product ID:</label><br>
+                        <input class="endpoint-txt" type="text" id="productId" name="productId"
+                               pattern="[0-9]{1}[0-9]{0,}" required><br>
+                        <!-- Button -->
+                        <input class="endpoint-btn" type="submit" value="Call Endpoint">
+                    </form>
+                    <!-- Response -->
+                    <div class="endpoint-response">
+                        <b class="flex-row">Result:</b>
+                        <textarea class="endpoint-txt" readonly="readonly" rows="2"
+                                  th:text="${getProductById}"></textarea>
+                    </div>
+                </div>
+
+                <!--Endpoint-->
+                <div class="endpoint">
+                    <!-- Title -->
+                    <h3 class="flex-row align-row endpoint-title">Find Product(s) By Name</h3>
+                    <form action="/products/search/name" method="post">
+                        <!-- Input -->
+                        <label class="endpoint-lbl" for="productName">Product Name:</label><br>
+                        <input class="endpoint-txt" type="text" id="productName" name="productName" required><br>
+                        <!-- Button -->
+                        <input class="endpoint-btn" type="submit" value="Call Endpoint">
+                    </form>
+                    <!-- Response -->
+                    <div class="endpoint-response">
+                        <b class="flex-row">Result:</b>
+                        <textarea class="endpoint-txt" readonly="readonly" rows="2"
+                                  th:text="${getProductsByName}"></textarea>
+                    </div>
+                </div>
+
+                <!--Endpoint-->
+                <div class="endpoint">
+                    <!-- Title -->
+                    <h3 class="flex-row align-row endpoint-title">Find Product(s) By Category</h3>
+                    <form action="/products/search/category" method="post">
+                        <!-- Input -->
+                        <label class="endpoint-lbl" for="productCategory">Product Category:</label><br>
+                        <input class="endpoint-txt" type="text" id="productCategory" name="productCategory"
+                               required><br>
+                        <!-- Button -->
+                        <input class="endpoint-btn" type="submit" value="Call Endpoint">
+                    </form>
+                    <!-- Response -->
+                    <div class="endpoint-response">
+                        <b class="flex-row">Result:</b>
+                        <textarea class="endpoint-txt" readonly="readonly" rows="2"
+                                  th:text="${getProductsByCategory}"></textarea>
+                    </div>
+                </div>
+
+                <!--Endpoint-->
+                <div class="endpoint">
+                    <!-- Title -->
+                    <h3 class="flex-row align-row endpoint-title">Find Product(s) By Price</h3>
+                    <form action="/products/search/price" method="post">
+                        <!-- Input -->
+                        <label class="endpoint-lbl" for="productPrice">Product Price:</label><br>
+                        <input class="endpoint-txt" type="text" id="productPrice" name="productPrice" required><br>
+                        <!-- Button -->
+                        <input class="endpoint-btn" type="submit" value="Call Endpoint">
+                    </form>
+                    <!-- Response -->
+                    <div class="endpoint-response">
+                        <b class="flex-row">Result:</b>
+                        <textarea class="endpoint-txt" readonly="readonly" rows="2"
+                                  th:text="${getProductsByPrice}"></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div class="body-part" style="--height:25px;"></div>
+
+            <div class="flex-col align-itm">
+                <div class="table-block flex-col table-menu">
+                    <form action="/products/apply" method="get">
+                        <div class="align-txt">
+                            <label class="endpoint-lbl" for="filter">Filter Value:</label>
+                            <input class="endpoint-txt" type="text" id="filter" name="filter" style="width: 50%">
+                            <label class="endpoint-lbl" for="filterBy">on:</label>
+                            <select id="filterBy" name="filterBy">
+                                <option value="id">ID</option>
+                                <option value="name">Name</option>
+                                <option value="category">Category</option>
+                                <option value="price">Price</option>
+                            </select>
+                            <br>
+                        </div>
+                        <div class="align-txt">
+                            <label for="sort">Sorting </label>
+                            <select id="sort" name="sort">
+                                <option value="asc">Ascending</option>
+                                <option value="dsc">Descending</option>
+                            </select>
+                            <label for="sortBy"> by: </label>
+                            <select id="sortBy" name="sortBy">
+                                <option value="id">ID</option>
+                                <option value="name">Name</option>
+                                <option value="category">Category</option>
+                                <option value="price">Price</option>
+                            </select>
+
+                            <input class="endpoint-btn" type="submit" value="Apply">
+                        </div>
+                    </form>
+                </div>
+                <div class="table-block flex-col">
+                    <iframe th:src="${iframeURL}" title="Products" width="100%" height="480px"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container footer flex-row" style="--width:100%">
+        <div class="container flex-row align-itm align-row" style="--width:30%">
+            <h3>Powered by</h3>
+        </div>
+        <div class="container flex-row align-itm align-row" style="--width:10%"></div>
+        <div class="container flex-row align-itm align-row" style="--width:60%;">
+            <img class="footer-image" src="../images/java.png" alt="Java">
+            <img class="footer-image" src="../images/spring.png" alt="Spring">
+            <img class="footer-image" src="../images/html.png" alt="HTML">
+            <img class="footer-image" src="../images/css.png" alt="CSS">
+        </div>
+    </div>
+</div>
+<div class="container" style="--width: 30%;"></div>
+</body>
+
+</html>
